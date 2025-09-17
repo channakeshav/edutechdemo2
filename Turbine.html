@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasmo EduTech - Business Mastery Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 42px;
+        }
+        
+        .logo h1 {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #e67e22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+           
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-actions a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .user-actions .btn {
+            background-color: #e67e22;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .user-actions .btn:hover {
+            background-color: #d35400;
+        }
+        
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .video-section {
+            flex: 7;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .video-info p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .video-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .video-actions button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .video-actions button:hover {
+            background: #e9ecef;
+        }
+        
+        .video-actions button i {
+            color: #e67e22;
+        }
+        
+        .sidebar {
+            flex: 3;
+        }
+        
+        .course-info {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .course-info h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #e67e22;
+            width: 65%;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .chapters {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .chapter-header {
+            padding: 15px 20px;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chapter-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .chapter-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .chapter-item:hover {
+            background: #f9f9f9;
+        }
+        
+        .chapter-item.active {
+            background: #fff8e1;
+            border-left: 4px solid #e67e22;
+        }
+        
+        .chapter-item h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .chapter-item p {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .chapter-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+        
+        .resources {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .resources h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-item i {
+            color: #e67e22;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #e67e22;
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #e67e22;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .video-section, .sidebar {
+                width: 100%;
+            }
+            
+            .video-actions {
+                justify-content: center;
+            }
+            
+            .video-actions button {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-industry fa-2x"></i>
+                <h1>Kasmo EduTech - Turbine Industry Meet</h1>
+            </div>
+            <div class="user-actions">
+                <a href="#"><i class="fas fa-search"></i> Search</a>
+                <a href="#"><i class="fas fa-bookmark"></i> My Meetings</a>
+                <a href="#" class="btn"><i class="fas fa-user"></i> Login</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="main-content">
+        <!-- Video Section Full Width -->
+        <div class="video-section">
+            <div class="video-container">
+                <!-- Embedded YouTube Video -->
+                <iframe src="https://www.youtube.com/embed/-mPReow5Sjg" title="Meeting Recording"
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h2>Session 2: Advances in Turbine Blade Design</h2>
+                <p>Technical presentation and discussion on innovative turbine blade materials, aerodynamics, and performance improvements.</p>
+                <div class="video-actions">
+                    <button><i class="fas fa-thumbs-up"></i> Like</button>
+                    <button><i class="fas fa-share-alt"></i> Share</button>
+                    <button><i class="fas fa-download"></i> Download Resources</button>
+                    <button><i class="fas fa-question-circle"></i> Ask Question</button>
+                    <button><i class="fas fa-bookmark"></i> Bookmark</button>
+                    <button><i class="fas fa-certificate"></i> Feedback Form</button>
+                </div>
+            </div>
+
+            <!-- Resources under video -->
+            <div class="resources">
+                <h3>Session Resources</h3>
+                <div class="resource-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <div>
+                        <h4>Blade Design Whitepaper</h4>
+                        <p>PDF - 3.5 MB</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-file-video"></i>
+                    <div>
+                        <h4>3D Simulation Video</h4>
+                        <p>MP4 - 20 MB</p>
+                    </div>
+                </div>
+                <div class="resource-item">
+                    <i class="fas fa-link"></i>
+                    <div>
+                        <h4>Industry References</h4>
+                        <p>External Research Links</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar"> 
+            <div class="course-info">
+                <h3>Turbine Industry Technical Meet</h3>
+                <p>This series of sessions brings together experts to discuss the latest innovations, challenges, and future directions in turbine technology.</p>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" style="width:45%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Meeting Progress</span>
+                        <span>3 of 7 Sessions</span>
+                    </div>
+                </div>
+                <div class="instructor">
+                    <p><strong>Host:</strong> Kasmo EduTech</p>
+                    <p><strong>Industry Partner:</strong> Global Turbine Solutions</p>
+                    <p><strong>Duration:</strong> 2 Days</p>
+                </div>
+            </div>
+
+            <div class="chapters">
+                <div class="chapter-header">
+                    <h3>Meeting Sessions</h3>
+                    <span>7 Sessions</span>
+                </div>
+                <div class="chapter-list">
+                    <div class="chapter-item">
+                        <h4>Session 1: Opening Keynote</h4>
+                        <p>Welcome speech and overview of turbine industry trends</p>
+                    </div>
+                    <div class="chapter-item active">
+                        <h4>Session 2: Advances in Turbine Blade Design</h4>
+                        <p>Innovations in materials and aerodynamics</p>
+                    </div>
+                    <div class="chapter-item">
+                        <h4>Session 3: Maintenance & Reliability</h4>
+                        <p>Strategies to enhance turbine life and reduce downtime</p>
+                    </div>
+                    <div class="chapter-item">
+                        <h4>Session 4: Digital Twins</h4>
+                        <p>Using AI and IoT for turbine performance monitoring</p>
+                    </div>
+                    <div class="chapter-item">
+                        <h4>Session 5: Sustainable Energy</h4>
+                        <p>Role of turbines in renewable and hybrid systems</p>
+                    </div>
+                    <div class="chapter-item">
+                        <h4>Session 6: Case Studies</h4>
+                        <p>Real-world turbine projects and lessons learned</p>
+                    </div>
+                    <div class="chapter-item">
+                        <h4>Session 7: Q&A Panel</h4>
+                        <p>Interactive discussion with experts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Kasmo EduTech</h3>
+                    <p>Kasmo EduTech provides high-quality courses on business, strategy, and leadership to help professionals advance their careers.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">All Courses</a></li>
+                        <li><a href="#">Membership</a></li>
+                        <li><a href="#">For Business</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, Learning City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@Kasmo EduTech.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kasmo EduTech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle chapter selection
+        document.querySelectorAll('.chapter-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.chapter-item').forEach(chap => {
+                    chap.classList.remove('active');
+                });
+                item.classList.add('active');
+                
+                // Update video title and description
+                document.querySelector('.video-info h2').textContent = item.querySelector('h4').textContent;
+                document.querySelector('.video-info p').textContent = item.querySelector('p').textContent;
+                
+                // In a real application, this would also load the corresponding video
+                alert("In a real application, this would load the video for: " + item.querySelector('h4').textContent);
+            });
+        });
+        
+        // Simulate resource download
+        document.querySelectorAll('.resource-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const resourceName = item.querySelector('h4').textContent;
+                alert("Downloading: " + resourceName);
+            });
+        });
+    </script>
+</body>
+</html>
