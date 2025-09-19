@@ -423,10 +423,7 @@
         <div class="video-section">
             <div class="video-container">
                 <!-- Embedded YouTube Video -->
-                <iframe src="https://www.youtube.com/embed/-mPReow5Sjg" title="Meeting Recording"
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                    gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2e5dDI24tsI?si=i7kJvRBCg-dniYDm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div class="video-info">
                 <h2>Session 2: Advances in Turbine Blade Design</h2>
@@ -594,5 +591,25 @@
             });
         });
     </script>
+     <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DKa000002cMYn',
+				'github',
+				'https://ka1746010123923.my.site.com/ESWgithub1758111408257',
+				{
+					scrt2URL: 'https://ka1746010123923.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://ka1746010123923.my.site.com/ESWgithub1758111408257/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>
